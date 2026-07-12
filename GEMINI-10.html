@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- META TAGS PARA LINK LIMPO NO INSTAGRAM/WHATSAPP -->
+  <title>ANDY TAMASHIRO • TEZZA PROMPTS</title>
+  <title>TEZZA PROMPTS OFICIAL</title>
+  <meta name="description" content="Tezza Prompts Oficial">
+  
+  <!-- Remove qualquer instrução de imagem para as redes sociais -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ANDY TAMASHIRO • TEZZA PROMPTS">
+  <meta property="og:description" content="TEZZA PROMPTS OFICIAL">
+  <meta property="og:image" content=""> <!-- Imagem vazia para forçar link limpo -->
+  <meta name="twitter:card" content="summary"> <!-- Card simples sem imagem grande -->
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Audiowide&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --red-f1: #DC0000;
+      --yellow-f1: #FFED00;
+      --black-f1: #0a0a0a;
+      --silver: #C0C0C0;
+      --neon-blue: #00D9FF;
+    }
+
+    /* ESCONDER SCROLLBAR GLOBALMENTE */
+    * {
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    *::-webkit-scrollbar {
+      display: none;
+    }
+
+    @keyframes pulse-neon {
+      0%, 100% { text-shadow: 0 0 10px var(--neon-blue); }
+      50% { text-shadow: 0 0 20px var(--neon-blue), 0 0 30px var(--red-f1); }
+    }
+
+    @keyframes border-glow {
+      0%, 100% { border-color: var(--red-f1); box-shadow: 0 0 15px var(--red-f1); }
+      50% { border-color: var(--yellow-f1); box-shadow: 0 0 25px var(--yellow-f1); }
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, var(--black-f1) 0%, #1a1a2e 50%, var(--black-f1) 100%);
+      color: #fff;
+      font-family: 'Orbitron', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    body.game-open {
+      overflow: hidden;
+    }
+
+    .bg-carbon {
+      position: fixed;
+      inset: 0;
+      background-image: url('https://i.pinimg.com/736x/18/a6/72/18a672d76481a0e97cb32ba16a097fc3.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      opacity: 0.3;
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    .bg-carbon::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(220, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(220, 0, 0, 0.2) 100%);
+      z-index: 1;
+    }
+
+    .container {
+      max-width: 1000px;
+      width: 100%;
+      padding: 60px 20px;
+      text-align: center;
+      position: relative;
+    }
+
+    .f1-title {
+      font-family: 'Audiowide', sans-serif;
+      font-size: clamp(2rem, 6vw, 4rem);
+      color: var(--red-f1);
+      text-transform: uppercase;
+      letter-spacing: 6px;
+      margin-bottom: 5px;
+      animation: pulse-neon 3s infinite;
+    }
+
+    .f1-subtitle {
+      font-size: 1.1rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--neon-blue);
+      margin-bottom: 40px;
+    }
+
+    .prompt-section {
+      margin-top: 40px;
+      position: relative;
+    }
+
+    .colaborador-tag {
+      text-align: left;
+      font-family: 'Audiowide', sans-serif;
+      color: var(--yellow-f1);
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 15px;
+      border-left: 4px solid var(--red-f1);
+      padding-left: 15px;
+    }
+
+    .prompt-card {
+      background: rgba(0, 0, 0, 0.7);
+      border: 2px solid var(--red-f1);
+      border-radius: 15px;
+      padding: 40px;
+      backdrop-filter: blur(15px);
+      position: relative;
+      overflow: hidden;
+      animation: border-glow 4s infinite;
+    }
+
+    .gemini-tag {
+      text-align: left;
+      font-weight: 900;
+      color: var(--neon-blue);
+      font-size: 1.3rem;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .modo-pro {
+      background: var(--red-f1);
+      color: #fff;
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      vertical-align: middle;
+    }
+
+    .prompt-box {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(0, 217, 255, 0.3);
+      padding: 25px;
+      border-radius: 10px;
+      text-align: left;
+      font-family: 'Montserrat', sans-serif;
+      line-height: 1.6;
+      font-size: 1.1rem;
+      min-height: 150px;
+      color: #e0e0e0;
+      position: relative;
+      z-index: 2;
+    }
+
+    .copy-btn {
+      margin-top: 30px;
+      width: 100%;
+      padding: 20px;
+      background: linear-gradient(45deg, var(--red-f1), #ff4d4d);
+      border: 2px solid var(--yellow-f1);
+      color: #000;
+      font-family: 'Audiowide', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: 0.3s;
+      box-shadow: 0 10px 20px rgba(220, 0, 0, 0.3);
+    }
+
+    .copy-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(220, 0, 0, 0.5);
+      background: linear-gradient(45deg, #ff4d4d, var(--red-f1));
+    }
+
+    .success-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.98);
+      z-index: 10000;
+      display: none;
+      align-items: center;
+      justify-content: flex-start;
+      flex-direction: column;
+      overflow-y: auto;
+      padding: 40px 20px;
+    }
+
+    .success-overlay.show {
+      display: flex;
+    }
+
+    .success-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .success-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .success-text {
+      font-size: clamp(1.8rem, 6vw, 3rem);
+      color: var(--yellow-f1);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      text-shadow: 0 0 20px var(--red-f1);
+      margin: 0;
+      width: 100%;
+    }
+
+    .success-subtitle {
+      color: var(--neon-blue);
+      letter-spacing: 2px;
+      font-size: 1.1rem;
+      margin: 0;
+      width: 100%;
+    }
+
+    .game-section {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      width: 100%;
+    }
+
+    .game-section.show {
+      display: flex;
+    }
+
+    .stats-bar {
+      width: 100%;
+      max-width: 400px;
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 15px;
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid var(--neon-blue);
+      border-radius: 10px;
+      font-family: 'Audiowide', sans-serif;
+    }
+
+    .stat-label { color: var(--yellow-f1); font-size: 0.7rem; }
+    .stat-value { color: #fff; font-size: 1rem; display: block; }
+
+    #game-container {
+      position: relative;
+      border: 3px solid var(--red-f1);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 30px rgba(220, 0, 0, 0.4);
+      background: #000;
+      width: 100%;
+      max-width: 400px;
+      aspect-ratio: 4 / 5;
+    }
+
+    canvas { width: 100%; height: 100%; display: block; }
+
+    .game-over-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.9);
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      text-align: center;
+      padding: 20px;
+    }
+    .game-over-overlay.show { display: flex; }
+
+    .go-title { font-size: 2.5rem; color: var(--red-f1); margin-bottom: 10px; }
+    .go-score { font-size: 1.5rem; color: var(--yellow-f1); margin-bottom: 25px; }
+
+    .go-btn {
+      padding: 15px 40px;
+      background: var(--red-f1);
+      color: #fff;
+      border: 2px solid var(--yellow-f1);
+      font-family: 'Audiowide', sans-serif;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    .controls {
+      display: flex;
+      width: 100%;
+      max-width: 400px;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .control-btn {
+      flex: 1;
+      height: 70px;
+      background: rgba(220, 0, 0, 0.2);
+      border: 2px solid var(--red-f1);
+      border-radius: 12px;
+      color: #fff;
+      font-size: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      touch-action: none;
+      cursor: pointer;
+    }
+
+    .close-game-btn {
+      padding: 10px 20px;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-family: 'Orbitron', sans-serif;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      border-radius: 6px;
+      margin-top: 10px;
+    }
+
+    footer {
+      margin-top: 60px;
+      padding: 40px 20px;
+      text-align: center;
+      border-top: 1px solid rgba(255, 237, 0, 0.3);
+      color: var(--silver);
+    }
+
+    @media (max-width: 768px) {
+      .success-overlay { padding: 20px 15px; }
+      .stats-bar, #game-container, .controls { max-width: 340px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-carbon"></div>
+
+  <div class="container">
+    <header>
+      <h1 class="f1-title">ANDY TAMASHIRO</h1>
+      <p class="f1-subtitle">TEZZA PROMPTS OFICIAL</p>
+    </header>
+
+    <section class="prompt-section">
+      <div class="colaborador-tag">ANDY TAMASHIRO COLABORADOR</div>
+      
+      <div class="prompt-card">
+        <div class="gemini-tag">
+          GEMINI <span class="modo-pro">[MODO PRO]</span>
+        </div>
+        
+        <div class="prompt-box">
+          <pre id="prompt-content" style="white-space: pre-wrap; font-family: inherit;">
+
+Ultra-realistic cinematic avatar 3D male portrait, Blender Cycles render in CGI, inspired by Seedream 5.0 realism and high-end IMVU/The Sims virtual aesthetics. Clearly a fictional digital avatar and not a real photograph. Hyper-detailed virtual influencer design with stylized CGI masculine proportions, luxury editorial aesthetics, advanced cinematic lighting, ultra-polished 3D rendering, and “TEZZA PROMPTS” text at the bottom center in elegant minimalist typography.
+
+CAMERA & COMPOSITION
+
+Vertical 9:16 aspect ratio athletic editorial portrait captured with a close-up, eye-level perspective. The composition features the subject from the waist up, centered against a vibrant, solid red background. The framing is tight, emphasizing the subject's shredded physique and the dynamic placement of the basketball and backpack. The high-contrast color palette creates a bold and energetic visual impact.
+
+POSE & BODY POSITIONING
+
+Subject is in a dynamic and athletic shirtless pose. Both arms are raised behind his head, with one hand holding a classic orange basketball securely against the back of his neck. He is wearing a black backpack with the straps visible over his shoulders. The pose is designed to showcase the highly defined abdominal muscles, broad chest, and muscular arms. The posture is confident and powerful, reflecting an intense athletic lifestyle.
+
+HEAD POSITION & GAZE
+
+Head is held straight with a slight downward tilt. The subject is looking directly at the camera with a focused and intense gaze. The positioning emphasizes the sharp jawline and the character's facial symmetry. A small white adhesive bandage is visible on his left cheek, adding a rugged, "post-game" detail to the look.
+
+FACIAL EXPRESSION
+
+Intense and focused masculine expression with a slight pout or determined set to the lips. The mood is energetic, competitive, and highly photogenic, capturing the raw confidence of a top-tier athlete.
+
+FACE & IDENTITY
+
+Adult male CGI avatar with sharp masculine facial structure, defined jawline, and sculpted cheekbones as established in the primary reference. Features include almond-shaped eyes, thick naturally groomed eyebrows, and a balanced symmetrical face. The facial identity remains 100% consistent with the original character, including skin tone and beauty aesthetics. Hyper-detailed Seedream 5.0 skin rendering with polished CGI realism.
+
+HAIR
+
+Short black hair styled in a sharp, high-textured crop exactly as the reference image. The hair is partially covered by a red baseball cap worn backward. The visible strands are jet-black, straight, and appear slightly tousled from the athletic activity, maintaining the signature spiked-up texture at the front. The hair rendering includes realistic glossy reflections and individual strand detail.
+
+ACCESSORIES & DETAILS
+
+The subject wears a red baseball cap backward. Multiple silver chain necklaces with different pendants hang around his neck. A small silver hoop earring is visible in the ear. A classic orange basketball with black lines is held behind the head. A small white bandage is on the cheek. Realistic skin texture with a hydrated, athletic sheen and visible muscle transitions. No tattoos are present on the body, maintaining the requested clean and polished editorial look.
+
+OUTFIT
+
+Shirtless masculine styling, paired with a black backpack. The waistband of white athletic underwear is visible at the hips. The look is minimalist and focused on the character's shredded physique and the bold red color of the cap and background.
+
+BODY & PHYSIQUE
+
+Extremely athletic and shredded masculine physique. Features include a deeply toned six-pack, highly defined obliques, broad shoulders, and muscular biceps. The body anatomy is rendered with high-precision CGI contouring, highlighting the lean and polished silhouette established for the character with professional-grade anatomical accuracy.
+
+SKIN & REALISM
+
+Ultra-detailed Seedream 5.0 skin rendering with realistic pores and a natural, athletic glow. Direct studio lighting creates sharp highlights on the shoulders, chest, and abdominal muscles, with smooth shadow gradients that emphasize the muscular volume. The skin texture maintains a premium Blender-style material realism.
+
+LIGHTING
+
+Clean, high-contrast studio lighting. The illumination is bright and focused, creating sharp highlights and deep shadows that define the character's muscularity. The vibrant red background reflects a warm glow onto the subject's skin, enhancing the overall energy and intensity of the composition.
+
+ENVIRONMENT
+
+A minimalist studio setting with a solid, vibrant red background. The lack of environmental clutter ensures all focus remains on the subject, the basketball, and the dynamic athletic pose. The bold red color provides a powerful and high-energy backdrop.
+
+MOOD & AESTHETIC
+
+Athletic, intense, and luxury masculine aesthetic. The mood is confident and vibrant, capturing a high-energy moment of a virtual sports influencer. The combination of the shredded physique, the basketball, and the bold red palette creates a sophisticated and high-impact atmosphere.
+
+STYLE & RENDER QUALITY
+
+Ultra-photorealistic Blender Cycles CGI render, cinematic realism, Seedream 5.0 masculine beauty rendering, 8K UHD quality, physically accurate lighting and materials, realistic skin micro-detail, IMVU-inspired avatar repaint aesthetics, high-fidelity masculine CGI rendering, realistic atmospheric depth, polished virtual influencer styling, advanced ray tracing, realistic reflections, luxury editorial lighting, ultra-clean cinematic render quality, and clearly fictional CGI-avatar aesthetics instead of a real photograph.
+
+            
+          </pre>
+        </div>
+
+        <button class="copy-btn" onclick="copyPrompt()">
+          COPIAR PROMPT 🏁
+        </button>
+      </div>
+    </section>
+
+    <footer>
+      <p>🏁 MARQUE <span style="color: var(--yellow-f1); font-weight: 700;">@andytamashiro</span> 🏁</p>
+      <p style="margin-top: 10px; font-size: 0.8rem;">ANDY TAMASHIRO • TEZZA PROMPTS — Conteúdo protegido.</p>
+    </footer>
+  </div>
+
+  <div class="success-overlay" id="success-screen">
+    <div class="success-content">
+      <div class="success-header">
+        <h2 class="success-text">PROMPT COPIADO!</h2>
+        <p class="success-subtitle">MARQUE @andytamashiro</p>
+      </div>
+
+      <div class="game-section" id="game-section">
+        <div class="stats-bar">
+          <div>
+            <span class="stat-label">PONTOS</span>
+            <span class="stat-value" id="score">0</span>
+          </div>
+          <div style="text-align: right;">
+            <span class="stat-label">STATUS</span>
+            <span class="stat-value" id="status" style="color: var(--neon-blue);">NA PISTA</span>
+          </div>
+        </div>
+
+        <div id="game-container">
+          <canvas id="f1Game" width="400" height="500"></canvas>
+          <div class="game-over-overlay" id="go-screen">
+            <h2 class="go-title">GAME OVER</h2>
+            <p class="go-score">PONTOS: <span id="final-score">0</span></p>
+            <button class="go-btn" onclick="resetGame()">REINICIAR 🏁</button>
+          </div>
+        </div>
+
+        <div class="controls">
+          <div class="control-btn" id="btn-left">◀</div>
+          <div class="control-btn" id="btn-right">▶</div>
+        </div>
+        <button class="close-game-btn" onclick="closeGame()">FECHAR JOGO</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let gameInitialized = false, gameActive = false, gameLoop = null;
+
+    function copyPrompt() {
+      const text = document.getElementById('prompt-content').innerText;
+      navigator.clipboard.writeText(text);
+      document.getElementById('success-screen').classList.add('show');
+      document.getElementById('game-section').classList.add('show');
+      document.body.classList.add('game-open');
+      if (!gameInitialized) { initializeGame(); gameInitialized = true; }
+      gameActive = true; resetGame();
+    }
+
+    function closeGame() {
+      document.getElementById('success-screen').classList.remove('show');
+      document.getElementById('game-section').classList.remove('show');
+      document.body.classList.remove('game-open');
+      gameActive = false; if (gameLoop) cancelAnimationFrame(gameLoop);
+    }
+
+    let canvas, ctx, pImg, bgImg, p, enemies, score, over, keys, bgY, moveLeft, moveRight;
+
+    function initializeGame() {
+      canvas = document.getElementById('f1Game'); ctx = canvas.getContext('2d');
+      pImg = new Image(); bgImg = new Image();
+      pImg.src = 'https://i.ibb.co/23Kzb4q2/f1-car-red.png'; 
+      bgImg.src = 'https://i.ibb.co/TxNCXcdv/f1-track-bg.png'; 
+      p = {x: 170, y: 380, w: 60, h: 100}; enemies = []; score = 0; over = false; keys = {}; bgY = 0;
+      window.addEventListener('keydown', (e) => { if(["ArrowLeft", "ArrowRight"].includes(e.key)) e.preventDefault(); keys[e.key] = true; });
+      window.addEventListener('keyup', (e) => keys[e.key] = false);
+      const btnL = document.getElementById('btn-left'), btnR = document.getElementById('btn-right');
+      const sL = (e) => { e.preventDefault(); moveLeft = true; }, eL = (e) => { e.preventDefault(); moveLeft = false; };
+      const sR = (e) => { e.preventDefault(); moveRight = true; }, eR = (e) => { e.preventDefault(); moveRight = false; };
+      btnL.addEventListener('touchstart', sL); btnL.addEventListener('touchend', eL);
+      btnL.addEventListener('mousedown', sL); btnL.addEventListener('mouseup', eL);
+      btnR.addEventListener('touchstart', sR); btnR.addEventListener('touchend', eR);
+      btnR.addEventListener('mousedown', sR); btnR.addEventListener('mouseup', eR);
+    }
+
+    function resetGame() {
+      over = false; enemies = []; score = 0; p.x = 170; bgY = 0;
+      document.getElementById('go-screen').classList.remove('show');
+      document.getElementById('score').innerText = "0";
+      document.getElementById('status').innerText = "NA PISTA";
+      document.getElementById('status').style.color = "var(--neon-blue)";
+      if (gameLoop) cancelAnimationFrame(gameLoop); loop();
+    }
+
+    function drawBackground() {
+      bgY += 5 + (score / 15); if (bgY >= 500) bgY = 0;
+      for(let i=-1; i<=1; i++) {
+        ctx.save(); ctx.translate(200, bgY + (i*500)); ctx.rotate(Math.PI / 2);
+        ctx.drawImage(bgImg, -250, -200, 500, 400); ctx.restore();
+      }
+    }
+
+    function loop() {
+      if (!gameActive) return;
+      if (over) {
+        document.getElementById('go-screen').classList.add('show');
+        document.getElementById('final-score').innerText = score;
+        document.getElementById('status').innerText = "BATEU!";
+        document.getElementById('status').style.color = "var(--red-f1)";
+        return;
+      }
+      ctx.clearRect(0, 0, 400, 500); drawBackground();
+      if ((keys.ArrowLeft || moveLeft) && p.x > 30) p.x -= 7;
+      if ((keys.ArrowRight || moveRight) && p.x < 310) p.x += 7;
+      ctx.drawImage(pImg, p.x, p.y, p.w, p.h);
+      if (Math.random() < 0.02) enemies.push({x: 40 + Math.random() * 260, y: -120, w: 60, h: 100});
+      enemies.forEach((e, i) => {
+        e.y += 5 + (score / 12);
+        ctx.save(); ctx.translate(e.x + e.w/2, e.y + e.h/2); ctx.rotate(Math.PI);
+        ctx.filter = 'hue-rotate(180deg) brightness(1.2)';
+        ctx.drawImage(pImg, -e.w/2, -e.h/2, e.w, e.h); ctx.restore();
+        const m = 12;
+        if (p.x+m < e.x+e.w-m && p.x+p.w-m > e.x+m && p.y+m < e.y+e.h-m && p.y+p.h-m > e.y+m) over = true;
+        if (e.y > 500) { enemies.splice(i, 1); score++; document.getElementById('score').innerText = score; }
+      });
+      gameLoop = requestAnimationFrame(loop);
+    }
+  </script>
+</body>
+</html>
